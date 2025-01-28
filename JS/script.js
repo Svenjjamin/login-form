@@ -19,10 +19,11 @@ switchSignupButton.addEventListener("click", () => {
   //Remove incorrect class. Variables are defined in validation.js
   allInputs.forEach(input => {
       if(input.parentElement.classList.contains('incorrect')){
-        input.parentElement.classList.remove('incorrect')
-        errorMessageLogIn.innerText = ''
-        errorMessageSignUp.innerText = ''
+        input.parentElement.classList.remove('incorrect');
+        errorMessageLogIn.innerText = '';
+        errorMessageSignUp.innerText = '';
       }
+      input.value = ''
   })
 })  
 
@@ -37,10 +38,11 @@ switchLoginButton.addEventListener("click", () => {
   
   allInputs.forEach(input => {
     if(input.parentElement.classList.contains('incorrect')){
-      input.parentElement.classList.remove('incorrect')
-      errorMessageLogIn.innerText = ''
-      errorMessageSignUp.innerText = ''
+      input.parentElement.classList.remove('incorrect');
+      errorMessageLogIn.innerText = '';
+      errorMessageSignUp.innerText = '';
     }
+    input.value = ''
   })
 })
 

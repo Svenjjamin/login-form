@@ -10,7 +10,6 @@
   --shadow-color: #342e2d;
   --highlight-color: #82E0D5;
   --error-color: #e08292;
-  --base-margin: 20px;
 }
 
 /*-----Styles-----*/
@@ -18,47 +17,55 @@
 	margin: 0;
 	padding: 0;
   box-sizing: border-box;
+  
 }
 html{
-	font-family: Noto Sans;
+	font-family: Noto Sans, sans-serif;
   font-size: 16pt;
   font-style: normal;
   font-kerning: inherit;
   text-align: center;
 }
 body{
-  min-height: 100vh;
+  height: 100vh;
   background-image: url(../pictures/bg_abstract_grey.jpg);
   background-size: 3000px;
-  overflow: hidden;
-}
-.wrapper{
-  background-color: var(--base-color);
-  height: max(50vh, 600px);
-  width: max(50vw, 500px);
-  padding: 10px;
-  position: relative;
-  left: 25%;
-  top: 20vh;
-  border-radius: 30px;
-  box-shadow: 0 5px 20px var(--shadow-color);
   display: flex;
- 
   flex-direction: column;     /* controls direction of main axis */
   align-items: center;      /* to position child elements along vertical (cross) axis*/
   justify-content: center;  /* to position child elements along horizontal (main) axis */
 }
-
-form {
-  width: min(500px, 100%);
-  margin-bottom: var(--base-margin); 
-  position: absolute;
+body::-webkit-scrollbar{
+  display: none;
 }
-
+.wrapper{
+  background-color: none;
+  height: max(100%, 600px);
+  width: max(100%, 600px);
+  border-radius: 30px;
+  box-shadow: 0 5px 20px none;
+  display: flex;
+  flex-direction: column;     /* controls direction of main axis */
+  align-items: center;      /* to position child elements along vertical (cross) axis*/
+  justify-content: center;  /* to position child elements along horizontal (main) axis */
+}
+form {
+  background-color: var(--base-color);
+  height: max(50%, 600px);
+  width: max(50%, 600px);
+  top: 25%;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 5px 20px var(--shadow-color); 
+  position: absolute;
+  display: flex;
+  flex-direction: column;     /* controls direction of main axis */
+  align-items: center;      /* to position child elements along vertical (cross) axis*/
+  justify-content: center;  /* to position child elements along horizontal (main) axis */
+}
 .logInForm{
   opacity: 1;
   z-index: 2;
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);    /*offsets anchor point by 50%. IMPORTENT when element must be centered*/
   transition: 0.6s ease-in-out;
@@ -82,11 +89,11 @@ form > div{
 h1{
   font-size: 2rem;
   font-weight: 900;
+  line-height: 100%;
   text-transform: uppercase;
   padding: 10px;
   color: var(--text-color);
 }
-
 .social-icons-bt{
   background-color: var(--input-color);
   border-radius: 8px;
@@ -105,26 +112,22 @@ h1{
 .separator{
   background-color: var(--text-color);
   height: 2px;
-  width: max(25vw, 300px);
+  width: 350px;
   position: absolute;
-  margin: 50px;
-  z-index: 1;
 }
-.separatorText{
-  background-color: var(--base-color);
-  margin: 20px;
-  padding: 0 10px;
-  z-index: 2;
+.inputClass{
+  width: 450px;
+  margin: 5px 20px 5px 20px;
 }
 
 form label{
   flex-shrink: 0;
   height: 50px;
   width: 50px;
-  font-size: 32pt;
+  font-size: 2rem;
   background-color: var(--accent-color);
   border-radius: 10px 0 0 10px;
-  margin-bottom: 10px;
+ 
   color: var(--base-color);
   fill: var(--base-color);
   display: flex;
@@ -134,13 +137,13 @@ form label{
 form input{
   flex-shrink: 0;
   height: 50px;
-  width: 300px;
-  margin-bottom: 10px;
+  width: 400px;
+
   border-radius: 0 10px 10px 0;
   background-color: var(--input-color);
   border: 1px solid var(--input-color);
-  padding-left: 5px;
-  font-size: 11pt;
+  padding: 5px;
+  font-size: 0.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -158,18 +161,31 @@ form button:active{
   transform: scale(0.9);
 }
 
-#vision{
+.vision{
   height: 30px;
-  width: 30px;
+  width: 450px;
   position: absolute;
-  left: 75%;
+  padding: 1%;
+  transform: translateX(0);
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  visibility: hidden;
+  
+}
+.visionButton{
   cursor: pointer;
+  visibility: visible;
 }
 
 .forgot{
-  transform: translateX(-22%);
+  width: 450px;
+  text-align: left;
+  /*background-color: #e08292; */
   font-size: 0.7rem;
   font-weight: 450;
+  display: flex;
+  justify-content: left;
 }
 
 .signButton{
@@ -188,9 +204,9 @@ form button:active{
 
 form p{
   font-size: medium;
-  padding: 5px;
   color: var(--text-color);
-  margin: 0.5em 0;
+  padding: 5px;
+  margin: 10px 0;
 }
 .switch{
   margin-top: 0.5em;
@@ -230,4 +246,43 @@ form div.incorrect input{
 }
 #errorMessageSignUp{
   color: var(--error-color);
+}
+
+/*----Responsive----*/
+@media(max-width: 600px){
+  form{
+   width: min(600px, 100%);
+   height: max(600px, 100%);
+   top: 0%;
+   border-radius: 0;
+  }
+  .separator{
+    width: min(350px, 90%);
+  }
+  .inputClass{
+    width: min(450px, 90%);
+  }
+  form input{
+    width: min(400px, 100%);
+  }
+  .vision{
+    width: min(450px, 90%);
+  }
+  .forgot{
+    width: min(450px, 100%);
+    justify-content: center;
+  }
+}
+@media(max-width: 250px){
+  .social-icons-bt{
+    margin: 0;
+  }
+}
+@media(max-height:600px){
+  form{
+    height: max(600px, 100%);
+    width: max(600px, 100%);
+    top: 0%;
+    border-radius: 0;
+   }
 }
